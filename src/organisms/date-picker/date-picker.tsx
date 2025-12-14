@@ -98,8 +98,8 @@ const DatePickerV3 = memo(
     placeholder = 'Select date...',
     className = '',
     disabled = false,
-    drawerWidth = '300px',
-    drawerHeight = '350px',
+    drawerWidth = '280px',
+    drawerHeight = '300px',
   }: DatePickerProps) => {
     const [internalValue, setInternalValue] = useState<Date | undefined>(() => {
       if (defaultValue) {
@@ -261,8 +261,8 @@ const DatePickerInput = memo(
         return
       }
 
-      const desiredWidth = parseSize(drawerWidth, 300)
-      const desiredHeight = parseSize(drawerHeight, 350)
+      const desiredWidth = parseSize(drawerWidth, 280)
+      const desiredHeight = parseSize(drawerHeight, 300)
 
       const width = Math.min(desiredWidth, viewportWidth - margin * 2)
       const height = Math.min(desiredHeight, viewportHeight - margin * 2)
