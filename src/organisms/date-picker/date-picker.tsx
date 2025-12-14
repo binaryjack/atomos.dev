@@ -243,16 +243,20 @@ const DatePickerInput = memo(
       const viewportHeight = window.innerHeight
       const margin = 8 // minimal gutter to avoid touching the viewport edges
 
-      // On small screens, occupy the full viewport to avoid overflow
+      // On small screens, center as a modal with compact sizing
       if (viewportWidth <= 640) {
+        const modalWidth = Math.min(Math.max(viewportWidth * 0.9, 280), 340)
+        const modalHeight = Math.min(Math.max(viewportHeight * 0.7, 320), 450)
+        
         setDrawerStyle({
           position: 'fixed',
-          top: 0,
-          left: 0,
-          width: viewportWidth,
-          height: viewportHeight,
-          maxWidth: viewportWidth,
-          maxHeight: viewportHeight,
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: modalWidth,
+          height: modalHeight,
+          maxWidth: viewportWidth - 16,
+          maxHeight: viewportHeight - 16,
         })
         return
       }
