@@ -23,28 +23,21 @@ export const computeMonthsGrid = (date: Date) => {
   const currentYear = date.getFullYear()
   const currentDay = date.getDate()
 
-  let colNumber: number = 1
   let rowNumber: number = 1
   for (let month = 0; month < 12; month++) {
     const cell = createCell(currentDay, month, currentYear, {
       isCurrentScope: true,
     })
     rowData.push(cell)
-    if (colNumber === 3) {
-      colNumber = 0
+
+    // Push row every 3 months (or at the end)
+    if ((month + 1) % 3 === 0 || month === 11) {
       const newRow = newCellsRow(rowNumber, rowData)
-      rowData = []
       output.push(newRow)
+      rowData = []
       rowNumber++
     }
-    colNumber++
   }
-  
-  // Push any remaining months in the last row
-  if (rowData.length > 0) {
-    const newRow = newCellsRow(rowNumber, rowData)
-    output.push(newRow)
-  }
-  
+
   return output
 }

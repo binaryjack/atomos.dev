@@ -119,25 +119,33 @@ export const useDrawerPosition = ({
     const spaceBelow = viewportHeight - rect.bottom - viewportMargin
     const spaceAbove = rect.top - viewportMargin
 
+    // If there's not enough space either above or below, use centered modal
+    const hasEnoughSpace = spaceBelow >= height || spaceAbove >= height
+
+    if (!hasEnoughSpace) {
+      // Not enough space - switch to centered modal behavior
+      setDrawerStyle({
+        position: 'fixed',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width,
+        height: 'auto',
+        minHeight: Math.min(height, viewportHeight - viewportMargin * 4),
+        maxWidth: viewportWidth - viewportMargin * 2,
+        maxHeight: viewportHeight - viewportMargin * 4,
+      })
+      return
+    }
+
     let top: number
-    let finalHeight: number
 
     if (spaceBelow >= height) {
       // Enough space below
       top = rect.bottom + viewportMargin
-      finalHeight = height
-    } else if (spaceAbove >= height) {
+    } else {
       // Enough space above
       top = rect.top - height - viewportMargin
-      finalHeight = height
-    } else if (spaceBelow >= spaceAbove) {
-      // More space below, but not enough - fit what we can
-      finalHeight = Math.max(Math.min(height, spaceBelow), 200)
-      top = rect.bottom + viewportMargin
-    } else {
-      // More space above, but not enough - fit what we can
-      finalHeight = Math.max(Math.min(height, spaceAbove), 200)
-      top = rect.top - finalHeight - viewportMargin
     }
 
     // Horizontal positioning: clamp to viewport
@@ -151,7 +159,7 @@ export const useDrawerPosition = ({
       top,
       left,
       width,
-      height: finalHeight,
+      height: 'auto',
       maxHeight: viewportHeight - viewportMargin * 2,
       maxWidth: viewportWidth - viewportMargin * 2,
     })
