@@ -1,0 +1,66 @@
+.step {
+    display: flex;
+    width: auto;
+    flex-direction: column;
+}
+
+.step-content {
+    display: flex;
+    width: inherit;
+}
+
+.slideToLeft {
+    animation: slideToLeft 5s forwards ease-in-out;
+}
+
+.slideToRight {
+    animation: slideToRight 5s forwards ease-in-out;
+}
+
+.slideFromRight {
+    animation: slideFromRight 5s forwards ease-in-out;
+}
+
+.slideFromLeft {
+    animation: slideFromLeft 5s forwards ease-in-out;
+}
+
+@keyframes slideFromRight {
+    from {
+        right: -100%;
+    }
+
+    to {
+        right: 0;
+    }
+}
+
+@keyframes slideFromLeft {
+    from {
+        left: -100%;
+    }
+
+    to {
+        left: 0;
+    }
+}
+
+@keyframes slideToLeft {
+    from {
+        left: 0;
+    }
+
+    to {
+        left: -100%;
+    }
+}
+
+@keyframes slideToRight {
+    from {
+        right: 0;
+    }
+
+    to {
+        right: -100%;
+    }
+}

@@ -1,0 +1,72 @@
+.setp-debug-toggle {
+    cursor: pointer;
+    position: fixed;
+    top: 50px;
+    right: 50px;
+
+    border-width: 2px;
+    border-color: rgb(227, 8, 92);
+    border-style: solid;
+    border-radius: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    background: rgb(183, 183, 183);
+    color: rgb(182, 0, 0);
+    z-index: 99999;
+}
+
+
+.setp-fillAll-toggle {
+    cursor: pointer;
+    position: fixed;
+    top: 50px;
+    right: 120px;
+
+    border-width: 2px;
+    border-color: rgb(227, 8, 92);
+    border-style: solid;
+    border-radius: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    background: rgb(183, 183, 183);
+    color: rgb(182, 0, 0);
+    z-index: 99999;
+}
+
+
+.stepper-debug {
+    overflow-y: scroll;
+    position: fixed;
+    top: 200px;
+    right: 50px;
+    width: 600px;
+    word-wrap: normal;
+    height: 700px;
+    border-width: 2px;
+    border-color: rgb(166, 166, 166);
+    border-style: solid;
+    border-radius: 2px;
+    padding: 2px;
+    background: rgb(242, 242, 242);
+    color: rgb(0, 0, 0);
+    z-index: 9999;
+}
+
+.errors-report {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    height: 200px;
+    border-width: 2px;
+    border-color: rgb(227, 8, 92);
+    border-style: solid;
+    border-radius: 2px;
+    padding: 50px;
+    background: rgb(183, 183, 183);
+    color: rgb(182, 0, 0);
+    z-index: 99999;
+}
