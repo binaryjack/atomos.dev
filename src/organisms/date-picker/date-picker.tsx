@@ -1,12 +1,12 @@
 import { memo, useCallback, useRef, useState } from 'react'
 import { DatePickerSelectionModeType } from './core/date-picker.types'
+import './date-picker.css'
 import DatePickerContentDrawer from './date-picker.drawer.content'
 import useKeyBindings from './hooks/use-key-bindings'
 import { Toggleable } from './toggleable/toggleable'
 import { useToggleableContext } from './toggleable/toggleable.context.hook'
 import { cx } from './utils/class-utils'
 import { DateFormatsEnum, formatDate } from './utils/date-utils'
-import './date-picker.css'
 
 /**
  * Props for the standalone DatePicker component (v3).
@@ -230,7 +230,10 @@ const DatePickerInput = memo(
     }
 
     return (
-      <div ref={containerRef as React.RefObject<HTMLDivElement>} className={cx('dp-wrapper', className)}>
+      <div
+        ref={containerRef as React.RefObject<HTMLDivElement>}
+        className={cx('dp-wrapper', className)}
+      >
         <div className="dp-input-container">
           <input
             ref={inputRef as React.RefObject<HTMLInputElement>}

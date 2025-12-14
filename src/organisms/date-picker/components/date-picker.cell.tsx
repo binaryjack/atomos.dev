@@ -85,6 +85,7 @@ const DatePickerCell = ({
       data-testid={`date-cell-${gridDisplayMode.toLowerCase()}-${cellItem?.id}`}
       data-scope={scope}
       data-grid-mode={gridDisplayMode}
+      data-view={gridDisplayMode.toLowerCase()}
     >
       <div>
         <DatePickerSwitch

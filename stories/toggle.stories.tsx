@@ -9,7 +9,8 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'A switch/toggle component for boolean values with customizable size and label position.',
+        component:
+          'A switch/toggle component for boolean values with customizable size and label position.',
       },
     },
   },

@@ -14,12 +14,7 @@ import React, {
 } from 'react'
 import { Button } from '../../atoms/button'
 import { formReducer, initialFormState } from './form-reducer'
-import {
-  FormActionType,
-  FormContextValue,
-  FormProviderProps,
-  FormProviderRef,
-} from './form-types'
+import { FormActionType, FormContextValue, FormProviderProps, FormProviderRef } from './form-types'
 
 /**
  * Form Context

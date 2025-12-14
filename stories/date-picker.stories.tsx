@@ -51,9 +51,7 @@ export const Basic: Story = {
           }}
         />
         {date && (
-          <p className="mt-4 text-sm text-gray-400">
-            Selected: {date.toLocaleDateString()}
-          </p>
+          <p className="mt-4 text-sm text-gray-400">Selected: {date.toLocaleDateString()}</p>
         )}
       </div>
     )
@@ -120,7 +118,8 @@ export const RangeSelection: Story = {
             <p>From: {startDate.toLocaleDateString()}</p>
             <p>To: {endDate.toLocaleDateString()}</p>
             <p className="mt-2 font-semibold">
-              Duration: {Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24))} days
+              Duration:{' '}
+              {Math.ceil((endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24))} days
             </p>
           </div>
         )}
@@ -179,9 +178,7 @@ export const Controlled: Story = {
             +1 Month
           </button>
         </div>
-        <p className="mt-4 text-sm text-gray-400">
-          Selected: {date.toLocaleDateString()}
-        </p>
+        <p className="mt-4 text-sm text-gray-400">Selected: {date.toLocaleDateString()}</p>
       </div>
     )
   },
@@ -233,13 +230,9 @@ export const WithClearButton: Story = {
             console.log('Date cleared')
           }}
         />
-        {cleared && (
-          <p className="mt-4 text-sm text-yellow-400">Date was cleared!</p>
-        )}
+        {cleared && <p className="mt-4 text-sm text-yellow-400">Date was cleared!</p>}
         {date && !cleared && (
-          <p className="mt-4 text-sm text-gray-400">
-            Selected: {date.toLocaleDateString()}
-          </p>
+          <p className="mt-4 text-sm text-gray-400">Selected: {date.toLocaleDateString()}</p>
         )}
       </div>
     )

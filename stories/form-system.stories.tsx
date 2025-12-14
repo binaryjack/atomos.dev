@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { FormProvider, FormField } from '../src/contexts/form'
-import { FormInput, FormSelect, FormTextarea, FormCheckbox, FormFileUpload } from '../src/molecules'
+import { FormField, FormProvider } from '../src/contexts/form'
+import { FormCheckbox, FormFileUpload, FormInput, FormSelect, FormTextarea } from '../src/molecules'
 
 const meta = {
   title: 'Forms/Complete Form Example',
@@ -266,11 +266,25 @@ export const RegistrationForm: Story = {
           submitLabel="Create Account"
           showReset={false}
         >
-          <FormInput id="username" placeholder="johndoe" helpText="3-20 characters, letters, numbers, and underscores only" />
+          <FormInput
+            id="username"
+            placeholder="johndoe"
+            helpText="3-20 characters, letters, numbers, and underscores only"
+          />
           <FormInput id="email" type="email" placeholder="john@example.com" />
-          <FormInput id="password" type="password" placeholder="Enter a strong password" helpText="At least 8 characters" />
+          <FormInput
+            id="password"
+            type="password"
+            placeholder="Enter a strong password"
+            helpText="At least 8 characters"
+          />
           <FormInput id="age" type="number" placeholder="18" />
-          <FormFileUpload id="avatar" accept="image/*" helpText="Optional profile picture (max 5MB)" showFileList />
+          <FormFileUpload
+            id="avatar"
+            accept="image/*"
+            helpText="Optional profile picture (max 5MB)"
+            showFileList
+          />
           <FormCheckbox id="terms" />
         </FormProvider>
       </div>
@@ -340,7 +354,12 @@ export const LoginForm: Story = {
     return (
       <div className="w-[400px] p-8 bg-gray-900 rounded-lg">
         <h2 className="text-2xl font-bold text-white mb-6">Sign In</h2>
-        <FormProvider initialFields={fields} onSubmit={handleSubmit} submitLabel="Sign In" showReset={false}>
+        <FormProvider
+          initialFields={fields}
+          onSubmit={handleSubmit}
+          submitLabel="Sign In"
+          showReset={false}
+        >
           <FormInput id="email" type="email" placeholder="your@email.com" />
           <FormInput id="password" type="password" placeholder="••••••••" />
           <FormCheckbox id="remember" />

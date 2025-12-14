@@ -35,11 +35,7 @@ export const WithPlaceholder: Story = {
     const [value, setValue] = useState('')
     return (
       <div className="w-80">
-        <SearchInput
-          value={value}
-          onChange={setValue}
-          placeholder="Search users..."
-        />
+        <SearchInput value={value} onChange={setValue} placeholder="Search users..." />
       </div>
     )
   },
@@ -50,11 +46,7 @@ export const WithInitialValue: Story = {
     const [value, setValue] = useState('React')
     return (
       <div className="w-80">
-        <SearchInput
-          value={value}
-          onChange={setValue}
-          placeholder="Search libraries..."
-        />
+        <SearchInput value={value} onChange={setValue} placeholder="Search libraries..." />
       </div>
     )
   },
@@ -63,28 +55,13 @@ export const WithInitialValue: Story = {
 export const FilteringList: Story = {
   render: () => {
     const [query, setQuery] = useState('')
-    const items = [
-      'Apple',
-      'Banana',
-      'Cherry',
-      'Date',
-      'Elderberry',
-      'Fig',
-      'Grape',
-      'Honeydew',
-    ]
+    const items = ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry', 'Fig', 'Grape', 'Honeydew']
 
-    const filtered = items.filter((item) =>
-      item.toLowerCase().includes(query.toLowerCase())
-    )
+    const filtered = items.filter((item) => item.toLowerCase().includes(query.toLowerCase()))
 
     return (
       <div className="w-80">
-        <SearchInput
-          value={query}
-          onChange={setQuery}
-          placeholder="Search fruits..."
-        />
+        <SearchInput value={query} onChange={setQuery} placeholder="Search fruits..." />
         <div className="mt-4 space-y-2">
           {filtered.length > 0 ? (
             filtered.map((item) => (

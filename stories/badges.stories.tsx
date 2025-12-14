@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { StatusBadge, SeverityBadge } from '../src/atoms'
+import { SeverityBadge, StatusBadge } from '../src/atoms'
 
 const meta = {
   title: 'Atoms/Badges',
@@ -7,7 +7,8 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'Status and Severity badges for displaying labeled information with color-coded styling.',
+        component:
+          'Status and Severity badges for displaying labeled information with color-coded styling.',
       },
     },
   },

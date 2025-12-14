@@ -61,7 +61,14 @@ function App() {
 ### Complete Form Example
 
 ```tsx
-import { FormProvider, FormInput, FormSelect, FormTextarea, FormCheckbox, FormField } from '@atomos/ui'
+import {
+  FormProvider,
+  FormInput,
+  FormSelect,
+  FormTextarea,
+  FormCheckbox,
+  FormField,
+} from '@atomos/ui'
 
 function ContactForm() {
   const fields: FormField[] = [
@@ -129,6 +136,7 @@ const customButton = getButtonStyles('primary', 'lg', true)
 ### Atoms (Fundamental UI Primitives)
 
 **Inputs & Controls:**
+
 - `Button` - Versatile button with variants and states
 - `Checkbox` - Checkbox input
 - `IconButton` - Icon-only button with accessibility
@@ -139,12 +147,14 @@ const customButton = getButtonStyles('primary', 'lg', true)
 - `Toggle` - Switch/toggle for boolean values
 
 **Layout & Structure:**
+
 - `Card` - Container component with styling variants
 - `FieldSet` - Form field spacing container
 - `Flex` - Flexbox layout with alignment and spacing
 - `Table` - Semantic table components
 
 **Form Support:**
+
 - `FormLabel` - Label with required indicator
 - `Label` - Semantic form labels
 - `ErrorMessage` - Validation error display
@@ -153,6 +163,7 @@ const customButton = getButtonStyles('primary', 'lg', true)
 - `CheckIcon` - Success indicator icon
 
 **Feedback & Status:**
+
 - `Badge` - Status and label badges
 - `InfoBox` - Informational messages with variants
 - `SeverityBadge` - Severity level indicators (1-4)
@@ -162,6 +173,7 @@ const customButton = getButtonStyles('primary', 'lg', true)
 ### Molecules (Composite Components)
 
 **Form Components:**
+
 - `FormInput` - Self-managed input with FormContext integration
 - `FormSelect` - Self-managed select with FormContext integration
 - `FormTextarea` - Self-managed textarea with FormContext integration
@@ -170,11 +182,13 @@ const customButton = getButtonStyles('primary', 'lg', true)
 - `FormFieldWrapper` - Reusable field layout wrapper
 
 **Deprecated (Legacy Support):**
+
 - `FormInputGroup` - ⚠️ Use FormInput + FormContext instead
 - `FormSelectGroup` - ⚠️ Use FormSelect + FormContext instead
 - `FormTextareaGroup` - ⚠️ Use FormTextarea + FormContext instead
 
 **UI Patterns:**
+
 - `ModalShell` - Accessible modal dialog
 
 ### Organisms (Complex Components)
@@ -185,6 +199,7 @@ const customButton = getButtonStyles('primary', 'lg', true)
 ### Contexts (State Management)
 
 **Form System:**
+
 - `FormProvider` - Context-based form state management
 - `useFormContext` - Hook to access form state
 - Validation engine with built-in rules

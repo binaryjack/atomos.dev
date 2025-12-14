@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Flex } from '../src/atoms/flex'
 import { Card } from '../src/atoms/card'
+import { Flex } from '../src/atoms/flex'
 
 const meta = {
   title: 'Atoms/Flex',
@@ -9,7 +9,8 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'Flexbox layout component with consistent alignment, spacing, and direction control.',
+        component:
+          'Flexbox layout component with consistent alignment, spacing, and direction control.',
       },
     },
   },

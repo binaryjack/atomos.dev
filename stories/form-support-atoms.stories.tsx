@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Label } from '../src/atoms/label'
 import { ErrorMessage } from '../src/atoms/error-message'
-import { HelpText } from '../src/atoms/help-text'
 import { FieldSet } from '../src/atoms/fieldset'
+import { HelpText } from '../src/atoms/help-text'
+import { Label } from '../src/atoms/label'
 
 const meta = {
   title: 'Atoms/Form Support Atoms',
@@ -33,11 +33,21 @@ export default meta
 export const LabelVariants: StoryObj = {
   render: () => (
     <div className="space-y-4 p-8 bg-gray-900 rounded-lg">
-      <Label htmlFor="field1" size="sm">Small Label</Label>
-      <Label htmlFor="field2" size="md">Medium Label (Default)</Label>
-      <Label htmlFor="field3" size="lg">Large Label</Label>
-      <Label htmlFor="field4" required>Required Field</Label>
-      <Label htmlFor="field5" color="secondary">Secondary Color</Label>
+      <Label htmlFor="field1" size="sm">
+        Small Label
+      </Label>
+      <Label htmlFor="field2" size="md">
+        Medium Label (Default)
+      </Label>
+      <Label htmlFor="field3" size="lg">
+        Large Label
+      </Label>
+      <Label htmlFor="field4" required>
+        Required Field
+      </Label>
+      <Label htmlFor="field5" color="secondary">
+        Secondary Color
+      </Label>
     </div>
   ),
 }
@@ -97,7 +107,9 @@ export const CompleteFieldLayout: StoryObj = {
   render: () => (
     <div className="w-96 p-8 bg-gray-900 rounded-lg">
       <FieldSet spacing="md">
-        <Label htmlFor="email" required>Email Address</Label>
+        <Label htmlFor="email" required>
+          Email Address
+        </Label>
         <input
           id="email"
           type="email"
@@ -108,7 +120,9 @@ export const CompleteFieldLayout: StoryObj = {
       </FieldSet>
 
       <FieldSet spacing="md">
-        <Label htmlFor="password" required>Password</Label>
+        <Label htmlFor="password" required>
+          Password
+        </Label>
         <input
           id="password"
           type="password"

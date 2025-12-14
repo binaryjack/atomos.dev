@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ReadOnlyField } from '../src/atoms/read-only-field'
 import { Badge } from '../src/atoms/badge'
 import { Card } from '../src/atoms/card'
+import { ReadOnlyField } from '../src/atoms/read-only-field'
 
 const meta = {
   title: 'Atoms/ReadOnlyField',
@@ -10,7 +10,8 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'Displays a label with a read-only value. Perfect for profile pages, detail views, and summary sections.',
+        component:
+          'Displays a label with a read-only value. Perfect for profile pages, detail views, and summary sections.',
       },
     },
   },
@@ -40,10 +41,7 @@ export const MultipleFields: Story = {
       <ReadOnlyField label="Full Name" value="John Doe" />
       <ReadOnlyField label="Email" value="john.doe@example.com" />
       <ReadOnlyField label="Phone" value="+1 (555) 123-4567" />
-      <ReadOnlyField
-        label="Status"
-        value={<Badge variant="success">Verified</Badge>}
-      />
+      <ReadOnlyField label="Status" value={<Badge variant="success">Verified</Badge>} />
       <ReadOnlyField label="Member Since" value="January 15, 2024" />
     </Card>
   ),
@@ -52,11 +50,7 @@ export const MultipleFields: Story = {
 export const WithCustomStyling: Story = {
   render: () => (
     <Card className="w-96 space-y-4">
-      <ReadOnlyField
-        label="Username"
-        value="@johndoe"
-        valueClassName="font-mono text-purple-400"
-      />
+      <ReadOnlyField label="Username" value="@johndoe" valueClassName="font-mono text-purple-400" />
       <ReadOnlyField
         label="API Key"
         value="sk_live_••••••••••••••••1234"

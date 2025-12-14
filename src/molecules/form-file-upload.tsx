@@ -105,8 +105,8 @@ export const FormFileUpload = forwardRef<HTMLInputElement, FormFileUploadProps>(
           <div className="mt-2 space-y-1">
             {files.map((file, index) => (
               <div key={index} className="text-xs text-gray-300 flex items-center gap-1">
-                <CheckIcon size={14} color="#10b981" /> {file.name} (
-                {(file.size / 1024).toFixed(1)} KB)
+                <CheckIcon size={14} color="#10b981" /> {file.name} ({(file.size / 1024).toFixed(1)}{' '}
+                KB)
               </div>
             ))}
           </div>

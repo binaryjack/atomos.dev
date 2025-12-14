@@ -8,7 +8,8 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'Displays informational messages with icon and optional title. Perfect for tips, warnings, and contextual help.',
+        component:
+          'Displays informational messages with icon and optional title. Perfect for tips, warnings, and contextual help.',
       },
     },
   },
