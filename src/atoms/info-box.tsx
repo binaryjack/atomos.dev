@@ -53,10 +53,10 @@ export const InfoBox = ({ variant = 'info', title, children, className = '' }: I
           <InfoIcon className={styles.icon} />
         </div>
         <div className="flex-1">
-          <p className={`text-sm ${styles.icon.replace('text-', 'text-').replace('400', '300')}`}>
-            {title && <strong>{title} </strong>}
-            {children}
-          </p>
+          <div className={`text-sm ${styles.icon.replace('text-', 'text-').replace('400', '300')}`}>
+            {title && <strong className="block mb-1">{title}</strong>}
+            <div>{children}</div>
+          </div>
         </div>
       </Flex>
     </div>

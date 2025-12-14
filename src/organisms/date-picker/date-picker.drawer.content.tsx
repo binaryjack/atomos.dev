@@ -11,6 +11,7 @@ import { getNextDate } from './core/getters/get-next-date'
 import { getPreviousDate } from './core/getters/get-previous-date'
 import { IDatePickerCell, IDatePickerRow } from './core/models/date-picker.models'
 import useKeyBindings from './hooks/use-key-bindings'
+import { PortalProvider } from './internal-components/portal'
 import { useToggleableContext } from './toggleable/toggleable.context.hook'
 import { DateFormatsEnum, parseDate } from './utils/date-utils'
 
@@ -221,17 +222,19 @@ const DatePickerContentDrawer = ({
   }
 
   return (
-    <DatePickerContext.Provider value={datePickerContextDefault}>
-      <DatePickerDrawerUI
-        id={id}
-        defaultSelectionMode={defaultSelectionMode}
-        showFooter={showFooter}
-        onClick={handleOnClick}
-        width={width}
-        height={height}
-        handleKeyDown={handleKeyDown}
-      />
-    </DatePickerContext.Provider>
+    <PortalProvider>
+      <DatePickerContext.Provider value={datePickerContextDefault}>
+        <DatePickerDrawerUI
+          id={id}
+          defaultSelectionMode={defaultSelectionMode}
+          showFooter={showFooter}
+          onClick={handleOnClick}
+          width={width}
+          height={height}
+          handleKeyDown={handleKeyDown}
+        />
+      </DatePickerContext.Provider>
+    </PortalProvider>
   )
 }
 
