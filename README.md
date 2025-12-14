@@ -205,6 +205,19 @@ const customButton = getButtonStyles('primary', 'lg', true)
 - Validation engine with built-in rules
 - Type-safe field definitions
 
+### Hooks (Reusable UI Logic)
+
+**Positioning & Layout:**
+
+- `useDrawerPosition` - Smart drawer/popover positioning with viewport awareness
+  - Auto-positions to avoid overflow
+  - Mobile-first modal centering
+  - Desktop smart placement (above/below)
+  - Handles resize and scroll events
+  - Fully customizable breakpoints
+
+See [Hooks Documentation](./src/hooks/README.md) for detailed usage examples.
+
 ### Design System
 
 - Button variants (primary, secondary, success, danger, etc.)
