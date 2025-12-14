@@ -130,23 +130,34 @@ const customButton = getButtonStyles('primary', 'lg', true)
 
 **Inputs & Controls:**
 - `Button` - Versatile button with variants and states
+- `Checkbox` - Checkbox input
+- `IconButton` - Icon-only button with accessibility
 - `Input` - Form input with validation states
+- `SearchInput` - Input with integrated search icon
 - `Select` - Dropdown select component
 - `Textarea` - Multi-line text input
-- `Checkbox` - Checkbox input
+- `Toggle` - Switch/toggle for boolean values
 
 **Layout & Structure:**
 - `Card` - Container component with styling variants
 - `FieldSet` - Form field spacing container
+- `Flex` - Flexbox layout with alignment and spacing
 - `Table` - Semantic table components
+
+**Form Support:**
+- `FormLabel` - Label with required indicator
+- `Label` - Semantic form labels
+- `ErrorMessage` - Validation error display
+- `HelpText` - Helper text for forms
+- `ReadOnlyField` - Display label with read-only value
+- `CheckIcon` - Success indicator icon
 
 **Feedback & Status:**
 - `Badge` - Status and label badges
+- `InfoBox` - Informational messages with variants
+- `SeverityBadge` - Severity level indicators (1-4)
 - `Spinner` - Loading indicators
-- `ErrorMessage` - Validation error display
-- `HelpText` - Helper text for forms
-- `Label` - Semantic form labels
-- `CheckIcon` - Success indicator icon
+- `StatusBadge` - Status indicators with color mapping
 
 ### Molecules (Composite Components)
 
@@ -158,11 +169,17 @@ const customButton = getButtonStyles('primary', 'lg', true)
 - `FormFileUpload` - File upload with preview and validation
 - `FormFieldWrapper` - Reusable field layout wrapper
 
+**Deprecated (Legacy Support):**
+- `FormInputGroup` - ⚠️ Use FormInput + FormContext instead
+- `FormSelectGroup` - ⚠️ Use FormSelect + FormContext instead
+- `FormTextareaGroup` - ⚠️ Use FormTextarea + FormContext instead
+
 **UI Patterns:**
 - `ModalShell` - Accessible modal dialog
 
 ### Organisms (Complex Components)
 
+- `DatePicker` - Comprehensive date selection with range support, keyboard navigation, and custom formats
 - `TimePicker` - Standalone time selection component
 
 ### Contexts (State Management)
