@@ -17,27 +17,34 @@ import { newCellsRow } from '../models/date-picker.models.constructors'
  * Row 4: 10, 11, 12
  */
 export const computeMonthsGrid = (date: Date) => {
-    const output: IDatePickerRow[] = []
-    let rowData: IDatePickerCell[] = []
+  const output: IDatePickerRow[] = []
+  let rowData: IDatePickerCell[] = []
 
-    const currentYear = date.getFullYear()
-    const currentDay = date.getDate()
+  const currentYear = date.getFullYear()
+  const currentDay = date.getDate()
 
-    let colNumber: number = 1
-    let rowNumber: number = 1
-    for (let month = 0; month < 12; month++) {
-        const cell = createCell(currentDay, month, currentYear, {
-            isCurrentScope: true
-        })
-        rowData.push(cell)
-        if (colNumber === 3) {
-            colNumber = 0
-            const newRow = newCellsRow(rowNumber, rowData)
-            rowData = []
-            output.push(newRow)
-            rowNumber++
-        }
-        colNumber++
+  let colNumber: number = 1
+  let rowNumber: number = 1
+  for (let month = 0; month < 12; month++) {
+    const cell = createCell(currentDay, month, currentYear, {
+      isCurrentScope: true,
+    })
+    rowData.push(cell)
+    if (colNumber === 3) {
+      colNumber = 0
+      const newRow = newCellsRow(rowNumber, rowData)
+      rowData = []
+      output.push(newRow)
+      rowNumber++
     }
-    return output
+    colNumber++
+  }
+  
+  // Push any remaining months in the last row
+  if (rowData.length > 0) {
+    const newRow = newCellsRow(rowNumber, rowData)
+    output.push(newRow)
+  }
+  
+  return output
 }
