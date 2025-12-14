@@ -1,4 +1,4 @@
-import { memo, useCallback, useRef, useState } from 'react'
+import { memo, useCallback, useEffect, useRef, useState, type CSSProperties } from 'react'
 import { DatePickerSelectionModeType } from './core/date-picker.types'
 import './date-picker.css'
 import DatePickerContentDrawer from './date-picker.drawer.content'
@@ -205,6 +205,7 @@ const DatePickerInput = memo(
     drawerHeight,
   }: DatePickerInputProps) => {
     const { toggleState, setToggleState } = useToggleableContext()
+    const [drawerStyle, setDrawerStyle] = useState<CSSProperties>({})
 
     const { handleKeyDown } = useKeyBindings({
       onArrowDownCallback: () => {
@@ -228,6 +229,92 @@ const DatePickerInput = memo(
         setToggleState('open')
       }
     }
+
+    const parseSize = (value: string, fallback: number) => {
+      const parsed = Number.parseFloat(value)
+      return Number.isFinite(parsed) ? parsed : fallback
+    }
+
+    const updateDrawerPosition = useCallback(() => {
+      if (!containerRef.current) return
+
+      const rect = containerRef.current.getBoundingClientRect()
+      const viewportWidth = window.innerWidth
+      const viewportHeight = window.innerHeight
+      const margin = 8 // minimal gutter to avoid touching the viewport edges
+
+      // On small screens, occupy the full viewport to avoid overflow
+      if (viewportWidth <= 640) {
+        setDrawerStyle({
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: viewportWidth,
+          height: viewportHeight,
+          maxWidth: viewportWidth,
+          maxHeight: viewportHeight,
+        })
+        return
+      }
+
+      const desiredWidth = parseSize(drawerWidth, 300)
+      const desiredHeight = parseSize(drawerHeight, 350)
+
+      const width = Math.min(desiredWidth, viewportWidth - margin * 2)
+      const height = Math.min(desiredHeight, viewportHeight - margin * 2)
+
+      // Choose vertical placement based on available space
+      const spaceBelow = viewportHeight - rect.bottom - margin
+      const spaceAbove = rect.top - margin
+
+      let top = rect.bottom + margin
+      let finalHeight = height
+
+      if (spaceBelow >= height) {
+        top = rect.bottom + margin
+        finalHeight = height
+      } else if (spaceAbove >= height) {
+        top = rect.top - height - margin
+        finalHeight = height
+      } else if (spaceBelow >= spaceAbove) {
+        finalHeight = Math.max(Math.min(height, spaceBelow), 200)
+        top = rect.bottom + margin
+      } else {
+        finalHeight = Math.max(Math.min(height, spaceAbove), 200)
+        top = rect.top - finalHeight - margin
+      }
+
+      const left = Math.min(
+        Math.max(rect.left, margin),
+        Math.max(margin, viewportWidth - width - margin)
+      )
+
+      setDrawerStyle({
+        position: 'fixed',
+        top,
+        left,
+        width,
+        height: finalHeight,
+        maxHeight: viewportHeight - margin * 2,
+        maxWidth: viewportWidth - margin * 2,
+      })
+    }, [containerRef, drawerHeight, drawerWidth])
+
+    useEffect(() => {
+      if (toggleState !== 'open') return
+
+      updateDrawerPosition()
+      const onResize = () => updateDrawerPosition()
+      const onScroll = () => updateDrawerPosition()
+
+      window.addEventListener('resize', onResize)
+      window.addEventListener('scroll', onScroll, true)
+
+      return () => {
+        window.removeEventListener('resize', onResize)
+        window.removeEventListener('scroll', onScroll, true)
+      }
+    }, [toggleState, updateDrawerPosition])
 
     return (
       <div
@@ -275,7 +362,8 @@ const DatePickerInput = memo(
               {
                 '--dp-drawer-width': drawerWidth,
                 '--dp-drawer-height': drawerHeight,
-              } as React.CSSProperties
+                ...drawerStyle,
+              } as CSSProperties
             }
           >
             <DatePickerContentDrawer
