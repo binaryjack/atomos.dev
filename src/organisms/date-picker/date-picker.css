@@ -226,10 +226,10 @@
     aspect-ratio: 1;
 }
 
-/* Month and year cells use flexible height */
+/* Month and year cells maintain equal aspect ratio */
 .date-cell[data-view="month"],
 .date-cell[data-view="year"] {
-    min-height: 2.2rem;
+    aspect-ratio: 1;
     padding: 0.25rem;
 }
 

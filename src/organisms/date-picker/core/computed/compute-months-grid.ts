@@ -3,14 +3,18 @@ import { IDatePickerCell, IDatePickerRow } from '../models/date-picker.models'
 import { newCellsRow } from '../models/date-picker.models.constructors'
 
 /**
- * Computes a grid of months for a date picker, organizing months into rows of four.
+ * Computes a grid of months for a date picker, organizing months into rows of three.
  *
  * @param date - The reference date used to determine the year and day for the grid.
  * @returns An array of rows, where each row contains cells representing months.
  *
  * Each cell in the grid represents a month and includes metadata such as whether
- * it belongs to the current scope (year). The grid is structured into rows, with
- * each row containing four months.
+ * it belongs to the current scope (year). The grid is structured into 4 rows, with
+ * each row containing 3 months (total 12 months):
+ * Row 1: 1, 2, 3
+ * Row 2: 4, 5, 6
+ * Row 3: 7, 8, 9
+ * Row 4: 10, 11, 12
  */
 export const computeMonthsGrid = (date: Date) => {
     const output: IDatePickerRow[] = []
@@ -26,7 +30,7 @@ export const computeMonthsGrid = (date: Date) => {
             isCurrentScope: true
         })
         rowData.push(cell)
-        if (colNumber === 4) {
+        if (colNumber === 3) {
             colNumber = 0
             const newRow = newCellsRow(rowNumber, rowData)
             rowData = []
