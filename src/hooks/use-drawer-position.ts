@@ -11,17 +11,17 @@ export interface UseDrawerPositionOptions {
   mobileBreakpoint?: number
   /** Whether drawer is currently open */
   isOpen: boolean
-  /** Mobile modal width as percentage of viewport (default: 0.9) */
+  /** Mobile modal width as percentage of viewport (default: 0.85) */
   mobileWidthRatio?: number
-  /** Mobile modal height as percentage of viewport (default: 0.7) */
+  /** Mobile modal height as percentage of viewport (default: 0.6) */
   mobileHeightRatio?: number
   /** Minimum mobile width in px (default: 280) */
   mobileMinWidth?: number
-  /** Maximum mobile width in px (default: 340) */
+  /** Maximum mobile width in px (default: 320) */
   mobileMaxWidth?: number
-  /** Minimum mobile height in px (default: 320) */
+  /** Minimum mobile height in px (default: 280) */
   mobileMinHeight?: number
-  /** Maximum mobile height in px (default: 450) */
+  /** Maximum mobile height in px (default: 380) */
   mobileMaxHeight?: number
   /** Viewport margin/gutter in px (default: 8) */
   viewportMargin?: number
@@ -29,14 +29,14 @@ export interface UseDrawerPositionOptions {
 
 /**
  * Custom hook for smart drawer positioning that adapts to viewport constraints.
- * 
+ *
  * Features:
  * - Auto-positions drawer to avoid viewport overflow
  * - Centers as modal on mobile devices
  * - Adjusts placement based on available space (above/below)
  * - Handles window resize and scroll events
  * - Returns computed CSS styles for positioning
- * 
+ *
  * @example
  * ```tsx
  * const containerRef = useRef<HTMLDivElement>(null)
@@ -46,7 +46,7 @@ export interface UseDrawerPositionOptions {
  *   desiredWidth: '300px',
  *   desiredHeight: '400px'
  * })
- * 
+ *
  * return (
  *   <div ref={containerRef}>
  *     <button onClick={() => setIsDrawerOpen(true)}>Open</button>
@@ -63,12 +63,12 @@ export const useDrawerPosition = ({
   desiredHeight = 350,
   mobileBreakpoint = 640,
   isOpen,
-  mobileWidthRatio = 0.9,
-  mobileHeightRatio = 0.7,
+  mobileWidthRatio = 0.85,
+  mobileHeightRatio = 0.6,
   mobileMinWidth = 280,
-  mobileMaxWidth = 340,
-  mobileMinHeight = 320,
-  mobileMaxHeight = 450,
+  mobileMaxWidth = 320,
+  mobileMinHeight = 280,
+  mobileMaxHeight = 380,
   viewportMargin = 8,
 }: UseDrawerPositionOptions): CSSProperties => {
   const [drawerStyle, setDrawerStyle] = useState<CSSProperties>({})
@@ -92,7 +92,7 @@ export const useDrawerPosition = ({
         Math.max(viewportWidth * mobileWidthRatio, mobileMinWidth),
         mobileMaxWidth
       )
-      const modalHeight = Math.min(
+      const modalMaxHeight = Math.min(
         Math.max(viewportHeight * mobileHeightRatio, mobileMinHeight),
         mobileMaxHeight
       )
@@ -103,22 +103,17 @@ export const useDrawerPosition = ({
         left: '50%',
         transform: 'translate(-50%, -50%)',
         width: modalWidth,
-        height: modalHeight,
+        height: 'auto',
+        minHeight: mobileMinHeight,
         maxWidth: viewportWidth - viewportMargin * 2,
-        maxHeight: viewportHeight - viewportMargin * 2,
+        maxHeight: modalMaxHeight,
       })
       return
     }
 
     // Desktop mode: smart positioning
-    const width = Math.min(
-      parseSize(desiredWidth, 300),
-      viewportWidth - viewportMargin * 2
-    )
-    const height = Math.min(
-      parseSize(desiredHeight, 350),
-      viewportHeight - viewportMargin * 2
-    )
+    const width = Math.min(parseSize(desiredWidth, 300), viewportWidth - viewportMargin * 2)
+    const height = Math.min(parseSize(desiredHeight, 350), viewportHeight - viewportMargin * 2)
 
     // Determine vertical placement based on available space
     const spaceBelow = viewportHeight - rect.bottom - viewportMargin
